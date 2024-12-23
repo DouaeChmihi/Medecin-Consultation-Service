@@ -12,6 +12,26 @@ service PatientProto{
   rpc UpdatePatient (UpdatePatientRequest) returns (UpdatePatientResponse);
   rpc DeletePatient (DeletePatientRequest) returns (DeletePatientResponse);
   rpc GetPatientRendezVous (GetPatientRendezVousRequest) returns (GetPatientRendezVousResponse);
+  rpc GetPatientByEmail (GetPatientByEmailRequest) returns (GetPatientByEmailResponse);
+  rpc CheckPatientExists (PatientEmail) returns (PatientExistsResponse);
+}
+
+message PatientEmail {
+  string email = 1;
+}
+
+message PatientExistsResponse {
+  bool exists = 1;
+}
+
+
+message GetPatientByEmailRequest {
+  string email = 1;
+}
+
+
+message GetPatientByEmailResponse {
+  Patient patient = 1;
 }
 
 message GetPatientByIdRequest {
